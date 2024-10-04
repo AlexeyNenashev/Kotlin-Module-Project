@@ -1,3 +1,7 @@
 fun main(args: Array<String>) {
-    println("Hello World!")
+    val notebook = Notebook()
+
+    println("Welcome to Notebook.")
+    notebook.start()
+    println("Goodbye.")
 }
