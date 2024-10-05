@@ -9,6 +9,6 @@ class Archive (override val name: String) : NotebookCollection<Note>(), Notebook
     override fun addNewElementToList(name: String) {
         val newNote = Note(name)
         newNote.readNoteText()
-        list.add(newNote)
+        listAdd(newNote)
     }
 }

@@ -1,8 +1,10 @@
-import java.util.Scanner
-
 abstract class NotebookCollection<T : NotebookItem> {
-    val list = mutableListOf<T>()
+    private val list = mutableListOf<T>()
     abstract val nameOfElement: String
+
+    protected fun listAdd(t: T) {
+        list.add(t)
+    }
 
     fun start() {
         while (true) {
@@ -16,7 +18,7 @@ abstract class NotebookCollection<T : NotebookItem> {
             println("$i. Exit")
             println("Select $nameOfElement:")
             try {
-                val input: Int = Scanner(System.`in`).nextLine().toInt()
+                val input: Int = scanner.nextLine().toInt()
                 when (input) {
                     0 -> createElement()
                     in 1..(i - 1) -> list.elementAt(input - 1).goTo()
@@ -32,8 +34,8 @@ abstract class NotebookCollection<T : NotebookItem> {
     private fun createElement() {
         while (true) {
             println("Enter name of new $nameOfElement:")
-            val inputName: String = Scanner(System.`in`).nextLine()
-            if (inputName.isNotEmpty()) {
+            val inputName: String = scanner.nextLine()
+            if (inputName.isNotBlank()) {
                 addNewElementToList(inputName)
                 println("$nameOfElement '$inputName' created.")
                 break
